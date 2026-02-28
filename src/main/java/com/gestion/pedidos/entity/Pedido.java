@@ -56,7 +56,8 @@ public class Pedido extends Base implements Calculable{
                 .sum();
     }
 
-    public DetallePedido findDetallePedidoByProducto(Long productoId) {
+    public DetallePedido findDetallePedidoByProducto(Producto producto) {
+        Long productoId = producto.getId();
         return detalles.stream()
                 .filter(detalle ->
                         detalle.getProducto() != null &&
@@ -67,8 +68,7 @@ public class Pedido extends Base implements Calculable{
     }
 
     public void deleteDetallePedidoByProducto(Producto producto) {
-        Long productoId = producto.getId();
-        DetallePedido detalle = findDetallePedidoByProducto(productoId);
+        DetallePedido detalle = findDetallePedidoByProducto(producto);
         if (detalle != null) {
             detalles.remove(detalle);
             calcularTotal();
