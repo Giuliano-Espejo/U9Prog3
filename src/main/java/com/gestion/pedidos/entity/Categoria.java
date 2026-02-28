@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(callSuper = false, onlyExplicitlyIncluded = true)
 public class Categoria extends Base {
 
     @EqualsAndHashCode.Include
@@ -31,7 +31,9 @@ public class Categoria extends Base {
     @Builder.Default
     Set<Producto> productos = new HashSet<>();
 
-    public void addProducto(Producto producto){
-        productos.add(producto);
+    public void addProducto(Producto producto) {
+        if (!productos.add(producto)) {
+            throw new IllegalArgumentException("Producto ya cargado en la categoría");
+        }
     }
 }

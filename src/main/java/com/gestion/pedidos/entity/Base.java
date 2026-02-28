@@ -15,11 +15,9 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
     private Long id;
 
     @Builder.Default

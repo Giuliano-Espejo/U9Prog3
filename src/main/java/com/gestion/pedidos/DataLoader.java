@@ -112,7 +112,7 @@ public class DataLoader implements CommandLineRunner {
                         usuario1.id(),
                         FormaPago.TARJETA,
                         List.of(
-                                new DetallePedidoCreate(3, producto7.id()),
+                                new DetallePedidoCreate(3, producto3.id()),
                                 new DetallePedidoCreate(5, producto8.id())
                         )
                 )
